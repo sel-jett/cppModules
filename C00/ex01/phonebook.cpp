@@ -6,12 +6,12 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 16:44:48 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/06/30 17:53:18 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/06/30 18:17:10 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
-#include "Contact.class.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 #include <iomanip>
 #include <iostream>
