@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:32 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/07/01 18:56:54 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:04:21 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Weapon
         ~Weapon();
         std::string const &getType();
         void &setType(std::string type);
+        
 };
 
 #endif
