@@ -13,7 +13,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp PhoneBook.class.hpp Contact.class.hpp
+%.o: %.cpp PhoneBook.hpp Contact.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
