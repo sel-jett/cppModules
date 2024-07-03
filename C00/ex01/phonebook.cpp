@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 16:44:48 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/06/30 18:17:10 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/07/03 22:16:44 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
+#include <sstream>
 #include <iomanip>
 #include <iostream>
 
@@ -190,12 +191,49 @@ void PhoneBook::search_contact(long long index)
     std::cout << std::endl;
 }
 
+
+void PhoneBook::display_contact()
+{
+    int i = 0;
+    int j = 0;
+
+    std::cout << "-------------------------------------------" << std::endl;
+    std::cout << "     Index|First name| Last name|  Nickname" << std::endl;
+    std::cout << "-------------------------------------------" << std::endl;
+    while (i < 8)
+    {
+        if (!this->contacts[i].get_first_name().empty())
+        {
+            j++;
+            std::cout << std::setw(10);
+            std::cout << i;
+            std::cout << "|";
+            std::cout << std::setw(10);
+            std::cout << display_str(this->contacts[i].get_first_name());
+            std::cout << "|";
+            std::cout << std::setw(10);
+            std::cout << display_str(this->contacts[i].get_last_name());
+            std::cout << "|";
+            std::cout << std::setw(10);
+            std::cout << display_str(this->contacts[i].get_nickname());
+            std::cout << std::endl;
+        std::cout << "-------------------------------------------" << std::endl;
+        }
+        i++;
+    }
+    if (!j)
+    {
+        std::cout << "------------ No data found ! --------------" << std::endl;
+        std::cout << "-------------------------------------------" << std::endl;
+    }
+}
+
 int main(void)
 {
     PhoneBook   phonebook;
     std::string command;
     std::string index;
-    long long   index_int;
+    int         i = 0;
     
     while(1)
     {
@@ -212,16 +250,20 @@ int main(void)
         }
         else if (command == "SEARCH")
         {
+            phonebook.display_contact();
             command.clear();
             std::cout << "Enter index: ";
             std::cin >> index;
-            index_int = std::atoi(index.c_str());
-            if (index_int > std::numeric_limits<long>::max())
+
+            std::stringstream ss(index);
+            ss >> i;
+            if (ss.fail() || !std::isdigit(index[0]) || i < 0 || i > 7)
             {
                 std::cout << "Invalid index" << std::endl;
-                continue;
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;    
             }
-            phonebook.search_contact(index_int);
+            phonebook.search_contact(i);
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
