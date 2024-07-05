@@ -6,13 +6,13 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 18:32:49 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/07/05 10:06:09 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/07/05 10:16:32 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type): type(type)
+Weapon::Weapon(const std::string &type): type(type)
 {
     // this->type = type;
 }
