@@ -6,29 +6,28 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 18:32:49 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/07/01 18:56:36 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/07/05 10:06:09 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type)
+Weapon::Weapon(std::string type): type(type)
 {
-    this->type = type;
+    // this->type = type;
 }
 
 Weapon::~Weapon()
 {
-    std::cout << "Weapon destroyed" << std::endl;
 }
 
-std::string const &Weapon::getType()
+std::string const Weapon::getType() const
 {
-    return (this->type);
+    return type;
 }
 
-void &Weapon::setType(std::string type)
+void Weapon::setType(const std::string &type_str)
 {
-    this->type = type;
+    type = type_str;
 }
 

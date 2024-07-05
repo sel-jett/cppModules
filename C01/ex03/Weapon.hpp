@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:32 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/07/01 19:04:21 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/07/05 10:06:08 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ class Weapon
     private:
         std::string type;
     public:
-        Weapon(std::string type);
+        Weapon(const std::string type);
         ~Weapon();
-        std::string const &getType();
-        void &setType(std::string type);
-        
+        std::string const getType() const;
+        void setType(const std::string &type_str);
 };
 
 #endif

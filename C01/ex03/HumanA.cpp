@@ -6,16 +6,15 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 18:33:48 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/07/01 18:53:50 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:37:44 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon weapon)
+HumanA::HumanA(std::string name, Weapon &weapon): weapon(weapon)
 {
     this->name = name;
-    this->weapon = &weapon;
 }
 
 HumanA::~HumanA()
@@ -25,5 +24,5 @@ HumanA::~HumanA()
 
 void HumanA::attack()
 {
-    std::cout << this->name << "attacks with their " << this->weapon->getType() << std::endl;
+    std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl;
 }
