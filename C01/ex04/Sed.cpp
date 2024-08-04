@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:05:53 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/04 22:29:34 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/04 23:15:38 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void Sed::search_and_replace()
 				text = text.substr(s1 + (this->s1).length());
 			}
 		}
-		(1) && (fclose(stdout), fclose(stdin));
+		fclose(stdout);
 	}
 }
