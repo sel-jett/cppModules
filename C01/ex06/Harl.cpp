@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 11:30:20 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/05 22:16:06 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/05 22:32:43 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Harl::~Harl()
 {
 	std::cout << "Harl's Destructer is called !!" << std::endl;
 }
+
 void Harl::debug()
 {
 	std::cout << "[ DEBUG ]\n "<< " love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
@@ -33,8 +34,7 @@ void Harl::info()
 
 void Harl::warning()
 {
-	std::cout << "[ WARNING ]\n "<< " think I deserve to have some extra bacon for free." << std::endl;
-	std::cout << "I’ve been coming for years whereas you started working here since last month." << std::endl;
+	std::cout << "[ WARNING ]\n "<< " think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void Harl::error()
@@ -48,17 +48,35 @@ void Harl::complain( std::string level )
     int choice;
 
     MemberFunctionPtr functionArray[4] = {
-		&Harl::error,
-		&Harl::warning,
-		&Harl::info,
 		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error,
 	};
 
-	choice = (level == "ERROR") * 1 + (level == "WARNING") * 2 + (level == "INFO") * 3 + (level == "DEBUG") * 4 - 1;
-	if (choice == -1)
+	choice = (level == "DEBUG") * 1 + (level == "INFO") * 2 + (level == "WARNING") * 3 + (level == "ERROR") * 4 - 1;
+	switch(choice)
 	{
-		std::cout << level << " doesn't exist :(" << std::endl;
-		return ;
+		case (-1):
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+			break ;
+		case (0):
+			(this->*functionArray[choice])();
+			(this->*functionArray[choice + 1])();
+			(this->*functionArray[choice + 2])();
+			(this->*functionArray[choice + 3])();
+			break ;
+		case (1):
+			(this->*functionArray[choice])();
+			(this->*functionArray[choice + 1])();
+			(this->*functionArray[choice + 2])();
+			break ;
+		case (2):
+			(this->*functionArray[choice])();
+			(this->*functionArray[choice + 1])();
+			break ;
+		case (3):
+			(this->*functionArray[choice])();
+			break ;
 	}
-	(this->*functionArray[choice])();
 }
