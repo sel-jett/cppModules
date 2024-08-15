@@ -1,4 +1,4 @@
-SRC = Fixed.cpp main.cpp
+SRC = Fixed.cpp Point.cpp main.cpp bsp.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +13,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Fixed.hpp
+%.o: %.cpp Fixed.hpp Point.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
