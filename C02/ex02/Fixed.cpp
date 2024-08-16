@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:03:42 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/14 04:19:42 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/16 00:33:07 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,12 +142,14 @@ Fixed Fixed::operator-(const Fixed& fixed)
     res.int_value = int_value - fixed.int_value;
     return (res);
 }
+
 Fixed Fixed::operator*(const Fixed& fixed)
 {
     Fixed res;
     res.int_value = (int_value * fixed.int_value) >> fractional_value;
     return (res);
 }
+
 Fixed Fixed::operator/(const Fixed& fixed)
 {
     Fixed res;
