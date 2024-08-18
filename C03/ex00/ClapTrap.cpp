@@ -6,13 +6,13 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 06:25:34 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/18 07:02:25 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/18 14:20:54 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap():Name("Unkown"), hit_points(10), energy_points(10), attack_damage(10)
+ClapTrap::ClapTrap():Name("Unkown"), hit_points(10), energy_points(10), attack_damage(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
