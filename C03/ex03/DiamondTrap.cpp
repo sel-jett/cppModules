@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:42:44 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/18 13:27:20 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:34:59 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ DiamondTrap::DiamondTrap():ClapTrap("Default_clap_name")
 {
     std::cout << "Diamond Default Constructor Called" << std::endl;
     Name = "Default";
-    hit_points = FragTrap::hit_points;
-    energy_points = ScavTrap::energy_points;
-    attack_damage = FragTrap::attack_damage;
+    hit_points = 100;
+    energy_points = 50;
+    attack_damage = 30;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& obj)
