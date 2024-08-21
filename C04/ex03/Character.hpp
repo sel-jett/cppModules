@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 13:19:58 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/21 05:23:51 by sel-jett         ###   ########.fr       */
+/*   Created: 2024/08/20 23:51:34 by sel-jett          #+#    #+#             */
+/*   Updated: 2024/08/21 01:41:52 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <iostream>
 #include "ICharacter.hpp"
 
-class ICharacter;
-
-class AMateria
-{
-    protected:
-        std::string type;
+class Character: public ICharacter {
+    private:
+        const std::string Name;
+        AMateria *slots[4];
     public:
-        AMateria();
-        AMateria(std::string const & type);
-        AMateria(const AMateria &obj);
-        AMateria& operator=(const AMateria &obj);
-        virtual ~AMateria();
-        std::string const & getType() const; //Returns the materia type
-        virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+        Character();
+        Character(const Character& obj);
+        Character(const std::string& Name);
+        Character& operator=(const Character& obj);
+        ~Character();
+        const std::string& getName( void ) const;
+        void equip(AMateria* m);
+        void unequip(int idx);
+        void use(int idx, ICharacter& target);
+      
 };
