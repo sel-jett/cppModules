@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 23:51:34 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/21 01:41:52 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/21 06:14:16 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 class Character: public ICharacter {
     private:
-        const std::string Name;
+        std::string Name;
         AMateria *slots[4];
     public:
         Character();

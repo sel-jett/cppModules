@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 03:59:25 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/21 04:46:58 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/21 06:02:25 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 MateriaSource::MateriaSource()
 {
-    std::cout << "MateriaSource Default constructor" << std::endl;
+    // std::cout << "MateriaSource Default constructor" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         materia[i] = NULL;
@@ -23,7 +23,7 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &obj)
 {
-    std::cout << "MateriaSource Copy constructor called" << std::endl;
+    // std::cout << "MateriaSource Copy constructor called" << std::endl;
     *this = obj;
 }
 
@@ -43,7 +43,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& obj)
 
 MateriaSource::~MateriaSource()
 {
-    std::cout << "MateriaSource Default Destructor" << std::endl;
+    // std::cout << "MateriaSource Default Destructor" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         if (materia[i])

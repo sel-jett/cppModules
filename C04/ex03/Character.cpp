@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 01:29:43 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/21 04:22:13 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/21 06:15:13 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Character::Character(): Name("Default Character")
 {
-    std::cout << "Character Default constructor called" << std::endl;
+    // std::cout << "Character Default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         slots[i] = NULL;
@@ -23,13 +23,13 @@ Character::Character(): Name("Default Character")
 
 Character::Character(const Character& obj)
 {
-    std::cout << "Character Copy constructor called" << std::endl;
+    // std::cout << "Character Copy constructor called" << std::endl;
     *this = obj;
 }
 
 Character::Character(const std::string& Name): Name(Name)
 {
-    std::cout << "Character Parametrize constructor called" << std::endl;
+    // std::cout << "Character Parametrize constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         slots[i] = NULL;
@@ -40,6 +40,7 @@ Character& Character::operator=(const Character& obj)
 {
     if (this != &obj)
     {
+        Name = obj.getName();
         for (int i = 0; i < 4; i++)
         {
             if (this->slots[i])
@@ -52,7 +53,11 @@ Character& Character::operator=(const Character& obj)
 
 Character::~Character()
 {
-    std::cout << "Character Destructor called" << std::endl;
+    // std::cout << "Character Destructor called" << std::endl;
+    for (int i = 0; i < 4; i++)
+    {
+        delete this->slots[i];
+    }
 }
 
 const std::string& Character::getName( void ) const
