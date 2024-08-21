@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 02:49:50 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/21 05:54:24 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/21 08:46:10 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 #include "Cure.hpp"
 #include "Character.hpp"
 
-void f()
-{
-    system("leaks Fixed");
-}
-
 int main()
 {
-    atexit(f);
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());

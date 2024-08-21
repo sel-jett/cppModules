@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 01:29:43 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/21 06:15:13 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/21 08:41:08 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ Character::Character(): Name("Default Character")
     for (int i = 0; i < 4; i++)
     {
         slots[i] = NULL;
+        slotsave[i] = NULL;
     }
 }
 
@@ -33,6 +34,7 @@ Character::Character(const std::string& Name): Name(Name)
     for (int i = 0; i < 4; i++)
     {
         slots[i] = NULL;
+        slotsave[i] = NULL;
     }
 }
 
@@ -56,7 +58,16 @@ Character::~Character()
     // std::cout << "Character Destructor called" << std::endl;
     for (int i = 0; i < 4; i++)
     {
-        delete this->slots[i];
+        if (this->slots[i])
+        {
+            delete this->slots[i];
+            this->slots[i] = NULL;
+        }
+        if (this->slotsave[i])
+        {
+            delete this->slotsave[i];
+            this->slotsave[i] = NULL;
+        }
     }
 }
 
@@ -69,10 +80,21 @@ void Character::equip(AMateria* m)
 {
     for (int i = 0; i < 4; i++)
     {
+        if (slotsave[i])
+        {
+            delete slotsave[i];
+            slotsave[i] = NULL;
+        }
+    }
+    for (int i = 0; i < 4; i++)
+    {
         if (this->slots[i] == NULL)
             break;
         else if (i == 3)
+        {
+            delete m;
             return ;
+        }
     }
     for (int i = 0; i < 4; i++)
     {
@@ -92,7 +114,13 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx)
 {
     if (idx >= 0 && idx < 4)
-        this->slots[idx] = NULL;
+    {
+        if (slots[idx])
+        {
+            slotsave[idx] = this->slots[idx];
+            this->slots[idx] = NULL;
+        }
+    }
 }
 
 void Character::use(int idx, ICharacter& target)

@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 03:59:25 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/21 06:02:25 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/21 08:09:30 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void MateriaSource::learnMateria(AMateria* mtr)
     {
         if (!this->materia[i] && mtr)
         {
-            this->materia[i] = mtr->clone();
+            this->materia[i] = mtr;
             return ;
         }
     }
