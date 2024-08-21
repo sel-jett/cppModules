@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:52:19 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/08/19 20:39:25 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/08/21 09:22:07 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ class Animal {
         virtual ~Animal();
         Animal(const std::string& type);
         std::string getType( void ) const;
-        void makeSound() const;
+        virtual void makeSound() const;
     
 };
