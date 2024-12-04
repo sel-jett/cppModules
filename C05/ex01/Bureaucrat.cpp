@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 18:11:17 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/12/04 18:58:30 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/12/04 21:55:15 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,17 @@ const std::string& Bureaucrat::getName() const {
 
 int Bureaucrat::getGrade( void ) const {
     return (Grade) ;
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+    try {
+        form.beSigned(*this);
+        std::cout << this->Name << " signed " << form.getName() << std::endl;
+    } catch(std::exception & e)
+    {
+        std::cout << this->Name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 void Bureaucrat::incrementBureaucratGrade( void ) {
