@@ -12,7 +12,7 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat():Name("Uknown"), Grade(0)
+Bureaucrat::Bureaucrat():Name("Uknown"), Grade(1)
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -37,6 +37,10 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 
 Bureaucrat::Bureaucrat(std::string const name, int grade): Name(name)
 {
+    if (grade < 1)
+        throw GradeTooHighException();
+    else if (grade > 150)
+        throw GradeTooLowException();
     this->Grade = grade;
 }
 

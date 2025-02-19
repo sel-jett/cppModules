@@ -14,12 +14,25 @@
 
 int main (void)
 {
-	Bureaucrat *a = new Bureaucrat("Salah Eddine", 150);
-	for (int i = 0; i <= 140; ++i)
-	{
+	try {
+		Bureaucrat *a = new Bureaucrat("Salah Eddine", 160);
 		a->decrementBureaucratGrade();
+		std::cout << *a ;
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
-	a->decrementBureaucratGrade();
-	std::cout << *a ;
+
+	try {
+		Bureaucrat *a = new Bureaucrat("Salah Eddine", 1);
+		for (int i = 0; i < 140; ++i)
+		{
+			a->decrementBureaucratGrade();
+		}
+		a->decrementBureaucratGrade();
+		std::cout << *a ;
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+
 	return (0);
 }
