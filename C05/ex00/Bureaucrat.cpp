@@ -55,7 +55,7 @@ int Bureaucrat::getGrade( void ) const {
 void Bureaucrat::incrementBureaucratGrade( void ) {
     try {
         if ((Grade - 1) < 1)
-            throw GradeTooLowException();
+            throw GradeTooHighException();
         else
             Grade--;
     } catch(std::exception & e) {
@@ -66,7 +66,7 @@ void Bureaucrat::incrementBureaucratGrade( void ) {
 void Bureaucrat::decrementBureaucratGrade( void ) {
     try {
         if ((Grade + 1) > 150)
-            throw GradeTooHighException();
+            throw GradeTooLowException();
         else
             Grade++;
     } catch(std::exception & e) {

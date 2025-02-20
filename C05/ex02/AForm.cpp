@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,56 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AAForm.hpp"
 
-Form::Form():Name("Uknown"), Sign(false), SignGrade(0), ExecGrade(0)
+AForm::AForm():Name("Uknown"), Sign(false), SignGrade(0), ExecGrade(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Form::Form(const Form& obj): Name(obj.Name), Sign(obj.Sign), SignGrade(obj.SignGrade), ExecGrade(obj.ExecGrade)
+AForm::AForm(const AForm& obj): Name(obj.Name), Sign(obj.Sign), SignGrade(obj.SignGrade), ExecGrade(obj.ExecGrade)
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Form& Form::operator=(const Form& obj)
+AForm& AForm::operator=(const AForm& obj)
 {
 	if (this != &obj)
 		Sign = obj.getSign();
 	return *this;
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Form::Form(std::string const name, bool Sign, const int SignGrade, const int ExecGrade): Name(name), SignGrade(SignGrade), ExecGrade(ExecGrade)
+AForm::AForm(std::string const name, bool Sign, const int SignGrade, const int ExecGrade): Name(name), SignGrade(SignGrade), ExecGrade(ExecGrade)
 {
 	this->Sign = Sign;
 }
 
-std::string const Form::getName() const
+std::string const AForm::getName() const
 {
 	return (Name);
 }
 
-bool Form::getSign() const
+bool AForm::getSign() const
 {
 	return Sign;
 }
 
-int Form::getSignGrade() const
+int AForm::getSignGrade() const
 {
 	return (SignGrade);
 }
 
-int Form::getExecGrade() const
+int AForm::getExecGrade() const
 {
 	return (ExecGrade);
 }
 
-void Form::beSigned(Bureaucrat &a)
+void AForm::beSigned(Bureaucrat &a)
 {
 	if (a.getGrade() >=  this->SignGrade)
 		Sign = true;
@@ -68,8 +68,8 @@ void Form::beSigned(Bureaucrat &a)
 
 }
 
-std::ostream& operator<<(std::ostream& stream, const Form &x)
+std::ostream& operator<<(std::ostream& stream, const AForm &x)
 {
-	stream << x.getName() << ", Form is Signed : " << x.getSign() << ", required sign grade : " << x.getSignGrade() << ", execution Grade : " << x.getExecGrade() << std::endl;
+	stream << x.getName() << ", AForm is Signed : " << x.getSign() << ", required sign grade : " << x.getSignGrade() << ", execution Grade : " << x.getExecGrade() << std::endl;
 	return (stream);
 }
