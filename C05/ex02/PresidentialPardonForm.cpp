@@ -1,21 +1,24 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): Name(), Sign(false), SignGrade(0), ExecGrade(0), _target("") {}
+PresidentialPardonForm::PresidentialPardonForm(): AForm("Presidential", false, 0, 0), _target("") {}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): Name("PresidentialPardon"), Sign(false), SignGrade(72), ExecGrade(45) {
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target): AForm("Presidential", false, 25, 5) {
     this->_target = target;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj): Name(obj.Name), SignGrade(obj.SignGrade), ExecGrade(obj.ExecGrade), _target(obj._target) {
-    this->Sign = obj.Sign;
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj): AForm(obj) {
+    *this = obj;
 }
 
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj) {
-    if (this != obj) {
-        this->Sign = obj.Sign;
-        this->target = obj.target;
+const PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj) {
+    if (this != &obj) {
+        AForm::operator=(obj);
+        this->_target = obj.getTarget();
     }
     return *this;
+}
+
+PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 std::string PresidentialPardonForm::getTarget() const {
@@ -24,9 +27,9 @@ std::string PresidentialPardonForm::getTarget() const {
 
 void PresidentialPardonForm::execute(Bureaucrat &executor) const {
     if (executor.getGrade() < this->getExecGrade())
-        throw GradeHighForExecutionException("");
+        throw GradeHighForExecutionException();
     if (!this->getSign())
-        throw FormNotSignedException("");
+        throw FormNotSignedException();
     std::cout << this->getTarget() << this->_target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
     
 }

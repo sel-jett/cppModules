@@ -1,19 +1,21 @@
 #pragma once
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Aform;
+class AForm;
 
 class PresidentialPardonForm: public AForm {
     private:
         std::string _target;
         PresidentialPardonForm();
     public:
-        PresidentialPardonForm(std::string target);
+        PresidentialPardonForm(const std::string &target);
         PresidentialPardonForm(const PresidentialPardonForm& obj);
-		PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
+		const PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
         ~PresidentialPardonForm();
         std::string getTarget() const;
+        virtual void execute(Bureaucrat &executor) const;
 };

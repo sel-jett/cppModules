@@ -47,21 +47,13 @@ class AForm {
 		};
 
 		class GradeHighForExecutionException: public std::exception{
-			private:
-				std::string _message;
 			public:
-				GradeHighForExecutionException(std::string &message): _message("GradeHighForExecutionException: Grade of is too high to be executed" + message) {};
-				virtual ~GradeHighForExecutionException() throw() {};
-				const char *what() const throw() {return _message.c_str();}
+				const char *what() const throw() {return "GradeHighForExecutionException: Grade of is too high to be executed";}
 		};
 		
 		class FormNotSignedException: public std::exception{
-			private:
-				std::string _message;
 			public:
-				FormNotSignedException(std::string &message): _message("FormNotSignedException: Form Needs to be signed" + message) {};
-				virtual ~FormNotSignedException() throw() {};
-				const char *what() const throw() {return _message.c_str();}
+				const char *what() const throw() {return "FormNotSignedException: Form Needs to be signed";}
 		};
 
 };
