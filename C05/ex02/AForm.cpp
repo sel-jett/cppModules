@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AAForm.hpp"
+#include "AForm.hpp"
+#include <sstream>
 
 AForm::AForm():Name("Uknown"), Sign(false), SignGrade(0), ExecGrade(0)
 {
@@ -70,6 +71,11 @@ void AForm::beSigned(Bureaucrat &a)
 
 std::ostream& operator<<(std::ostream& stream, const AForm &x)
 {
-	stream << x.getName() << ", AForm is Signed : " << x.getSign() << ", required sign grade : " << x.getSignGrade() << ", execution Grade : " << x.getExecGrade() << std::endl;
+	std::stringstream signGradeString;
+	signGradeString << x.getSignGrade();
+	std::stringstream execGradeString;
+	execGradeString << x.getExecGrade();
+
+	stream << x.getName() << ", AForm is Signed : " << x.getSign() << ", required sign grade : " << signGradeString.str() << ", execution Grade : " << execGradeString.str() << std::endl;
 	return (stream);
 }
