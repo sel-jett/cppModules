@@ -1,7 +1,7 @@
 #include "intern.hpp"
 #include <iostream>
 
-Intern::Intern():_job("Uknown")
+Intern::Intern()
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -19,13 +19,8 @@ Intern::~Intern()
 
 Intern& Intern::operator=(const Intern& obj)
 {
-    if (this != &obj)
-        _job = obj.getJob();
+    (void)obj;
     return (*this);
-}
-
-std::string Intern::getJob( void ) const {
-    return _job;
 }
 
 AForm* Intern::createPresident( std::string &target ) {

@@ -9,8 +9,6 @@
 class AForm;
 
 class Intern {
-    private:
-        std::string _job;
     public:
         Intern();
 		Intern(const Intern& obj);
@@ -19,6 +17,5 @@ class Intern {
         AForm* createPresident( std::string &target );
         AForm* createShrubbery( std::string &target );
         AForm* createRobotomy( std::string &target );
-        std::string getJob( void ) const;
         AForm *makeForm(std::string formName, std::string formTarget);
 };
