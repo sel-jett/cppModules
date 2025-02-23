@@ -16,9 +16,9 @@ class Intern {
 		Intern(const Intern& obj);
 		Intern& operator=(const Intern& obj);
 		~Intern();
-        PresidentialPardonForm* createPresident( void );
-        ShrubberyCreationForm* createShrubbery( void );
-        RobotomyRequestForm* createRobotomy( void );
+        AForm* createPresident( std::string &target );
+        AForm* createShrubbery( std::string &target );
+        AForm* createRobotomy( std::string &target );
         std::string getJob( void ) const;
-        AForm *makeForm(std::string &formName, std::string &formTarget);
+        AForm *makeForm(std::string formName, std::string formTarget);
 };

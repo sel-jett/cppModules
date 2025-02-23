@@ -15,6 +15,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "intern.hpp"
 
 int main (void)
 {
@@ -52,6 +53,13 @@ int main (void)
 	std::cout << *a3;
 	delete b3;
 	delete a3;
+	// ========================================= Test 4 ==============================================
+	Bureaucrat *a4 = new Bureaucrat("laylow", 25);
+	std::cout << "\033[1;32m// ======================================== Test 4 ===============================================\033[0m" << std::endl;
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	a4->signForm(*rrf);
 
 	return (0);
 }
