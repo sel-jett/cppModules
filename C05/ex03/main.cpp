@@ -60,6 +60,8 @@ int main (void)
 	AForm* rrf;
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	a4->signForm(*rrf);
+	delete a4;
+	delete rrf;
 
 	return (0);
 }
