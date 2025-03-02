@@ -43,7 +43,7 @@ void toChar(std::string arg) {
     }
     
     if (isprint(value))
-        std::cout << "char: '" << (char)value << "'" << std::endl;
+        std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
     else 
         std::cout << "char: Non displayable" << std::endl;
 }
