@@ -32,16 +32,35 @@ ScalarConverter::~ScalarConverter()
 
 // }
 
-void toInt(std::string arg) {
+void toChar(std::string arg) {
     
-    if (arg != "+inf" && arg != "-inf" && arg != "inf") {
+    int value;
+    std::stringstream ss(arg);
+    ss >> value;
+    if (ss.fail()) {
         std::cout << "int: impossible" << std::endl;
         return;
     }
     
-    int value = atof(arg.c_str());
+    if (isprint(value))
+        std::cout << "char: '" << (char)value << "'" << std::endl;
+    else 
+        std::cout << "char: Non displayable" << std::endl;
+}
+
+void toInt(std::string arg) {
     
-    if (isinf(value)) {
+    int value;
+    std::stringstream ss(arg);
+    ss >> value;
+    if (ss.fail() && arg != "+inf" && arg != "-inf" && arg != "inf") {
+        std::cout << "int: impossible" << std::endl;
+        return;
+    }
+    
+    value = atof(arg.c_str());
+    
+    if (arg == "+inf" || arg == "-inf" || arg == "inf") {
             std::cout << "int: " << arg << std::endl;
         return;
     }
@@ -50,27 +69,22 @@ void toInt(std::string arg) {
         std::cout << "int: " << arg << std::endl;
         return;
     }
-
-    std::stringstream ss(arg);
-    int testValue;
-    ss >> testValue;
-    if (ss.fail()) {
-        std::cout << "int: impossible" << std::endl;
-        return;
-    }
     
-    std::cout << "int: " << testValue << std::endl;
+    std::cout << "int: " << value << std::endl;
 }
 
 void toFloat(std::string arg) {
     
-    if (arg != "nan" && arg != "nanf" &&  arg != "+inf" && arg != "-inf" && 
+    float value;
+    std::stringstream ss(arg);
+    ss >> value;
+    if (ss.fail() && arg != "nan" && arg != "nanf" &&  arg != "+inf" && arg != "-inf" && 
     arg != "+inff" && arg != "-inff" && arg != "inf" && arg != "inff") {
         std::cout << "float: impossible" << std::endl;
         return;
     }
     
-    float value = atof(arg.c_str());
+    value = atof(arg.c_str());
     
     if (isinf(value)) {
         std::cout << "float: " << arg << std::endl;
@@ -90,13 +104,16 @@ void toFloat(std::string arg) {
 
 void toDouble(std::string arg) {
     
-    if (arg != "nan" && arg != "nanf" && 
+    double value;
+    std::stringstream ss(arg);
+    ss >> value;
+    if (ss.fail() && arg != "nan" && arg != "nanf" && 
         arg != "+inf" && arg != "-inf" && arg != "+inff" && arg != "-inff" && arg != "inf" && arg != "inff") {
         std::cout << "double: impossible" << std::endl;
         return;
     }
     
-    double value = atof(arg.c_str());
+    value = atof(arg.c_str());
     
     if (isinf(value)) {
             std::cout << "double: " << arg << std::endl;
@@ -120,6 +137,7 @@ void ScalarConverter::convert(std::string arg) {
     if (arg[arg.length() - 1] == 'f' && arg != "nan" && arg != "nanf" &&
         arg != "+inf" && arg != "-inf" && arg != "+inff" && arg != "-inff" && arg != "inf" && arg != "inff")
         arg = arg.substr(0, arg.length() - 1);
+    toChar(arg);
     toInt(arg);
     toFloat(arg);
     toDouble(arg);
