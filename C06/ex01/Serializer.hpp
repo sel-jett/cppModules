@@ -1,4 +1,11 @@
 #pragma once
+#include <iostream>
+#include <stdint.h>
+
+
+typedef struct t_Data {
+    int i;
+} Data;
 
 class Serializer {
     private:
