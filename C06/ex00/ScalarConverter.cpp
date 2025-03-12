@@ -139,8 +139,10 @@ void toDouble(std::string arg) {
 }
 
 void ScalarConverter::convert(std::string arg) {
-    if (arg.empty())
+    if (arg.empty()) {
+        std::cerr << "arg[1] : shouldn't be empty()" << std::endl;
         return;
+    }
     if (arg[arg.length() - 1] == 'f' && (isdigit(arg[0]) || arg[0] == '+' || arg[0] == '-') && 
     arg != "+inf" && arg != "+inff" && arg != "-inf" && arg != "-inff")
         arg = arg.substr(0, arg.length() - 1);
