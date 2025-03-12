@@ -35,14 +35,21 @@ ScalarConverter::~ScalarConverter()
 void toChar(std::string arg) {
     
     int value;
+    char value2 = -32;
     std::stringstream ss(arg);
     ss >> value;
     if (ss.fail()) {
-        std::cout << "int: impossible" << std::endl;
-        return;
+        std::stringstream bb(arg);
+        bb >> value2;
+        if (bb.fail() || arg.length() != 1) {
+            std::cout << "char: impossible " << std::endl;
+            return;
+        }
     }
-    
-    if (isprint(value))
+
+    if (value2 != -32)
+        std::cout << "char: '" << value2 << "'" << std::endl;
+    else if (isprint(value))
         std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
     else 
         std::cout << "char: Non displayable" << std::endl;
@@ -134,8 +141,8 @@ void toDouble(std::string arg) {
 void ScalarConverter::convert(std::string arg) {
     if (arg.empty())
         return;
-    if (arg[arg.length() - 1] == 'f' && arg != "nan" && arg != "nanf" &&
-        arg != "+inf" && arg != "-inf" && arg != "+inff" && arg != "-inff" && arg != "inf" && arg != "inff")
+    if (arg[arg.length() - 1] == 'f' && (isdigit(arg[0]) || arg[0] == '+' || arg[0] == '-') && 
+    arg != "+inf" && arg != "+inff" && arg != "-inf" && arg != "-inff")
         arg = arg.substr(0, arg.length() - 1);
     toChar(arg);
     toInt(arg);
