@@ -12,7 +12,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp whatever.hpp
+%.o: %.cpp iter.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
