@@ -16,6 +16,7 @@ class Array
         ~Array();
         Array<T> &operator=(const Array<T> &obj);
         T &operator[](size_t index);
+        T const &operator[](size_t index) const;
         size_t size(void) const;
 };
 
@@ -23,20 +24,21 @@ template<typename T>
 Array<T>::Array(void) : array(NULL), length(0) {}
 
 template<typename T>
-Array<T>::Array(unsigned int n)
+Array<T>::Array(unsigned int n): array(NULL), length(0)
 {
-    length = n;
     try{
         array = new T[n];
+        length = n;
     }
     catch (std::bad_alloc&)
     {
-        std::cerr << "Bad alloc" << std::endl;
+        length = 0; 
+        throw ;
     }
 }
 
 template<typename T>
-Array<T>::Array(const Array<T> &obj)
+Array<T>::Array(const Array<T> &obj): array(NULL), length(0)
 {
     *this = obj;
 }
@@ -52,17 +54,20 @@ Array<T> &Array<T>::operator=(const Array<T> &obj)
 {
     if (this != &obj)
     {
-        delete[] array;
-        length = obj.length;
+        T* temp = NULL;
         try {
-            array = new T[length];
+            if (obj.length > 0) {
+                temp  = new T[obj.length];
+                for (size_t i = 0; i < obj.length; i++) {
+                    temp[i] = obj.array[i];
+                }
+            }
+            delete[] this->array;
+            array = temp;
+            length = obj.length;
         } catch (std::bad_alloc&) {
-            std::cerr << "Bad alloc" << std::endl;
-            length = 0;
-            array = NULL;
-        }
-        for (size_t i = 0; i < length; i++) {
-            array[i] = obj.array[i];
+            delete[] temp;
+            throw;
         }
     }
     return (*this);
@@ -71,8 +76,16 @@ Array<T> &Array<T>::operator=(const Array<T> &obj)
 template<typename T>
 T &Array<T>::operator[](size_t index)
 {
-    if (index > length)
-        throw std::exception("index out of bound");
+    if (index >= length)
+        throw std::out_of_range("index out of bound");
+    return (array[index]);
+}
+
+template<typename T>
+const T &Array<T>::operator[](size_t index) const
+{
+    if (index >= length)
+        throw std::out_of_range("index out of bound");
     return (array[index]);
 }
 
