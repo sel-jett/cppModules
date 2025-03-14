@@ -29,7 +29,7 @@ Array<T>::Array(unsigned int n)
     try{
         array = new T[n];
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc&)
     {
         std::cerr << "Bad alloc" << std::endl;
     }
@@ -56,7 +56,7 @@ Array<T> &Array<T>::operator=(const Array<T> &obj)
         length = obj.length;
         try {
             array = new T[length];
-        } catch (std::bad_alloc) {
+        } catch (std::bad_alloc&) {
             std::cerr << "Bad alloc" << std::endl;
             length = 0;
             array = NULL;
