@@ -16,7 +16,7 @@ class Array
         ~Array();
         Array<T> &operator=(const Array<T> &obj);
         T &operator[](size_t index);
-        T const &operator[](size_t index) const;
+        const T &operator[](size_t index) const;
         size_t size(void) const;
 };
 
