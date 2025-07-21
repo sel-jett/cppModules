@@ -13,6 +13,6 @@ class Span {
         Span& operator=(const Span& obj);
         ~Span();
         void addNumber(unsigned int N);
-        // int shortestSpan();
-        // int longestSpan();
+        int shortestSpan();
+        int longestSpan();
 };
