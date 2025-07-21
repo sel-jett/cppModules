@@ -64,3 +64,11 @@ int Span::longestSpan() {
     
     return max - min;
 }
+
+
+void Span::addNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last) {
+    size_t rangeSize = std::distance(first, last);
+    if (Span_numbers.size() + rangeSize > max)
+        throw "you've reached the limit for the numbers";
+    Span_numbers.insert(Span_numbers.end(), first, last);
+}
