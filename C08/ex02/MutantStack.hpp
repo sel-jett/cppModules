@@ -13,10 +13,18 @@ class MutantStack : public std::stack<T>
         typedef typename std::stack<T>::container_type::iterator iterator;
         typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
+        typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+        typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+
         const_iterator begin() const;
         const_iterator end() const;
         iterator begin();
         iterator end();
+
+        const_reverse_iterator rbegin() const;
+        const_reverse_iterator rend() const;
+        reverse_iterator rbegin();
+        reverse_iterator rend();
 };
 
 template <typename T>
@@ -47,6 +55,29 @@ template <typename T>
 typename MutantStack<T>::const_iterator MutantStack<T>::end() const
 {
     return this->c.end();
+}
+
+template <typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const
+{
+    return this->c.rbegin();
+}
+template <typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const
+{
+    return this->c.rend();
+}
+
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
+{
+    return this->c.rbegin();
+}
+
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
+{
+    return this->c.rend();
 }
 
 template <typename T>
