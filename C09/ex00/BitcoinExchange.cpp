@@ -44,14 +44,14 @@ void BitcoinExchange::readData(const std::string& filename) {
     std::string line;
     bool first_line = true;
     while (std::getline(file, line)) {
-            if (first_line) {
-                if (line.length() > 0 && line[line.length() - 1] == '\r') {
-                    line = line.substr(0, line.length() - 1);
+        if (first_line) {
+            if (line.length() > 0 && line[line.length() - 1] == '\r') {
+                line = line.substr(0, line.length() - 1);
                 }
             if (line != "date | value") {
-                    std::cout << "Error: bad input => " << line << std::endl;
-                    return;
-                }
+                std::cout << "Error: bad input => " << line << std::endl;
+                return;
+            }
             first_line = false;
             continue;
         }
