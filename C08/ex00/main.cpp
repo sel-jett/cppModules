@@ -1,6 +1,4 @@
 #include "easyfind.hpp"
-#include <vector>
-#include <algorithm>
 
 int main( void ) {
     std::vector<int> test;
@@ -17,9 +15,9 @@ int main( void ) {
     try
     {
         // ======================================== Test 2 ===============================================
-    std::cout << "\033[1;32m// ======================================== Test 2 ===============================================\033[0m" << std::endl;
-    int n = easyfind(test, 20);
-    std::cout << "Found occ of " << n << std::endl;
+        std::cout << "\033[1;32m// ======================================== Test 2 ===============================================\033[0m" << std::endl;
+        int n = easyfind(test, 20);
+        std::cout << "Found occ of " << n << std::endl;
     }
     catch(std::string& e)
     {
@@ -29,9 +27,9 @@ int main( void ) {
     try
     {
         // ======================================== Test 3 ===============================================
-    std::cout << "\033[1;32m// ======================================== Test 3 ===============================================\033[0m" << std::endl;
-    int n = easyfind(test, 1);
-    std::cout << "Found occ of " << n << std::endl;
+        std::cout << "\033[1;32m// ======================================== Test 3 ===============================================\033[0m" << std::endl;
+        int n = easyfind(test, 1);
+        std::cout << "Found occ of " << n << std::endl;
     }
     catch(std::string& e)
     {
