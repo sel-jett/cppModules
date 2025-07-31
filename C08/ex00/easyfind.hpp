@@ -1,17 +1,12 @@
 #pragma once
 #include <iostream>
-#include <vector>
+#include <algorithm>
+#include <string>
 
 template <typename T>
 int easyfind(T container, int occ) {
-    typename T::iterator it = container.begin();
-    typename T::iterator end = container.end();
-    
-    while (it != end) {
-        if (*it == occ) {
-            return occ;
-        }
-        ++it;
-    }
-    throw std::string("Not found!!");
+    typename T::iterator it = std::find(container.begin(), container.end(), occ);
+    if (it == container.end())
+        throw std::string("Not found!!");
+    return occ;
 }
