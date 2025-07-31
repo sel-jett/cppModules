@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <algorithm>
 
 Span::Span() {}
 
@@ -25,44 +26,25 @@ void Span::addNumber(unsigned int number) {
     Span_numbers.push_back(number);
 }
 
-int Span::shortestSpan() {
+size_t Span::shortestSpan() {
     if (Span_numbers.size() < 2)
         throw "no span can be found";
+    std::sort(Span_numbers.begin(), Span_numbers.end());
+    unsigned int starting_Span = Span_numbers[1] - Span_numbers[0];
 
-    unsigned int shortestDistance = Span_numbers[1] - Span_numbers[0];
-    if (Span_numbers[0] > Span_numbers[1])
-        shortestDistance = Span_numbers[0] - Span_numbers[1];
-    
-    for (size_t i = 0; i < Span_numbers.size(); i++) {
-        for (size_t j = i + 1; j < Span_numbers.size(); j++) {
-            unsigned int diff;
-            if (Span_numbers[i] > Span_numbers[j])
-                diff = Span_numbers[i] - Span_numbers[j];
-            else
-                diff = Span_numbers[j] - Span_numbers[i];
-            
-            if (diff < shortestDistance)
-                shortestDistance = diff;
-        }
+    for (unsigned int i = 0; i < Span_numbers.size() - 1; i++) {
+        if (Span_numbers[i + 1] - Span_numbers[i] < starting_Span)
+            starting_Span = Span_numbers[i + 1] - Span_numbers[i];
     }
-    return shortestDistance;
+    return starting_Span;
 }
 
-int Span::longestSpan() {
+size_t Span::longestSpan() {
     if (Span_numbers.size() < 2)
         throw "no span can be found";
 
-    unsigned int min = Span_numbers[0];
-    unsigned int max = Span_numbers[0];
-    
-    for (size_t i = 1; i < Span_numbers.size(); i++) {
-        if (Span_numbers[i] < min)
-            min = Span_numbers[i];
-        if (Span_numbers[i] > max)
-            max = Span_numbers[i];
-    }
-    
-    return max - min;
+    std::sort(Span_numbers.begin(), Span_numbers.end());
+    return Span_numbers[Span_numbers.size() - 1] - Span_numbers[0];
 }
 
 
