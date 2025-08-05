@@ -14,7 +14,7 @@ int main(int ac, char **av) {
         }
     }
     else {
-        std::cout << "Error2" << std::endl;
+        std::cout << "Commande example : ./PmergeMe 1 2 3 4 5 6 7 8 9 10" << std::endl;
         return -1;
     }
     return 0;

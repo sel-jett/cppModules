@@ -17,14 +17,6 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
 
 PmergeMe::~PmergeMe() {}
 
-std::vector<int> PmergeMe::getVector() const {
-    return myvector;
-}
-
-void PmergeMe::setVector(std::vector<int> vvector) {
-    this->myvector = vvector;
-}
-
 void PmergeMe::ft_parcing(char **av) {
     int i = 0;
     char *p = NULL;
@@ -80,3 +72,25 @@ int	ft_atoi(const char *str) {
     }
 	return (num);
 }
+
+// Done parcing
+
+std::vector<int> PmergeMe::getVector() const {
+    return myvector;
+}
+
+void PmergeMe::setVector(std::vector<int> vvector) {
+    this->myvector = vvector;
+}
+
+std::deque<int> PmergeMe::getDeque() const {
+    return mydeque;
+}
+
+void PmergeMe::setDeque(std::deque<int> deque) {
+    this->mydeque = deque;
+}
+
+
+
+

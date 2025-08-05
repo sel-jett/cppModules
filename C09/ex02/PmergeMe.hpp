@@ -19,6 +19,9 @@ class PmergeMe {
         ~PmergeMe();
         void setVector(std::vector<int> vvector);
         std::vector<int> getVector() const;
+        void setDeque(std::deque<int> deque);
+        std::deque<int> getDeque() const;
+        
         void ft_parcing(char **av);
         void printVector() const;
         // void sortVector();
