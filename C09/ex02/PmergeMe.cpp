@@ -79,8 +79,16 @@ std::vector<int> PmergeMe::getVector() const {
     return myvector;
 }
 
+std::vector<int> PmergeMe::getVector2() const {
+    return myvector;
+}
+
 void PmergeMe::setVector(std::vector<int> vvector) {
     this->myvector = vvector;
+}
+
+void PmergeMe::setVector2(std::vector<int> vvector) {
+    this->myvector2 = vvector;
 }
 
 std::deque<int> PmergeMe::getDeque() const {
@@ -91,6 +99,48 @@ void PmergeMe::setDeque(std::deque<int> deque) {
     this->mydeque = deque;
 }
 
+void PmergeMe::sortVector() {
+    std::vector<int> mainchain;
+    std::vector<int> pendchain;
+    std::vector<int> result;
+    std::vector<std::pair<int, int> > pairs;
 
+    int straggler = -1;
+    (void)straggler;
+    if (myvector2.size() % 2 == 1) {
+        straggler = myvector2.back();
+        myvector2.pop_back();
+    } 
+    for (size_t i = 0; i < myvector2.size(); i += 2) {
+        int pair1 = myvector2[i];
+        int pair2 = myvector2[i + 1];
+        if (pair2 > pair1) {
+            std::swap(pair1, pair2);
+        }
+        pairs.push_back(std::make_pair(pair1, pair2));
+    }
 
+    for (size_t i = 0; i < pairs.size(); i++) {
+        mainchain.push_back(pairs[i].first);
+        pendchain.push_back(pairs[i].second);
+        std::cout << pairs[i].first << std::endl;
+    }
 
+    if (mainchain.size() > 1) {
+        myvector2 = mainchain;
+        sortVector();
+        mainchain = myvector2;
+    }
+
+    if (!pendchain.empty()) {
+        std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(), pendchain[0]);
+        result.insert(pos, pendchain[0]);
+    }
+
+    if (straggler != -1) {
+        std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(), straggler);
+        result.insert(pos, straggler);
+    }
+
+    myvector2 = result;
+}
