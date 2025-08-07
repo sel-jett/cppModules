@@ -8,6 +8,9 @@ int main(int ac, char **av) {
             std::cout << "Before: ";
             pmerge.printVector();
             pmerge.setVector2(pmerge.getVector());
+            std::cout << "After: ";
+            pmerge.sortVector();
+            pmerge.printVector();
         }
         else {
             std::cout << "Error1" << std::endl;

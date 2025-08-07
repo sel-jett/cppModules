@@ -24,6 +24,8 @@ class PmergeMe {
         std::vector<int> getVector2() const;
         void setDeque(std::deque<int> deque);
         std::deque<int> getDeque() const;
+        std::vector<int> getSequence(size_t size);
+        std::vector<int> insertionPos(size_t size);
         
         void ft_parcing(char **av);
         void printVector() const;

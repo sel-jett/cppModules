@@ -37,7 +37,7 @@ void PmergeMe::ft_parcing(char **av) {
 }
 
 void PmergeMe::printVector() const {
-    for (std::vector<int>::const_iterator it = myvector.begin(); it != myvector.end(); it++) {
+    for (std::vector<int>::const_iterator it = myvector2.begin(); it != myvector2.end(); it++) {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
@@ -99,12 +99,53 @@ void PmergeMe::setDeque(std::deque<int> deque) {
     this->mydeque = deque;
 }
 
+std::vector<int> PmergeMe::getSequence(size_t size) {
+    std::vector<int> sequence;
+    sequence.push_back(0);
+    sequence.push_back(1);
+
+    while (sequence.back() < static_cast<int>(size)) {
+        sequence.push_back((sequence.back() + 2 * sequence[sequence.size() - 2]));
+    }
+
+    return sequence;
+}
+
+std::vector<int> PmergeMe::insertionPos(size_t size) {
+    std::vector<int> sequence = getSequence(size);
+    std::vector<int> order;
+    std::vector<bool> used(size, false);
+    used[0] = true;
+
+    for (size_t i = 1; i < sequence.size() && sequence[i] < static_cast<int>(size); i++)
+    {
+        if (!used[sequence[i]]) {
+            order.push_back(sequence[i]);
+            used[sequence[i]] = true;
+        }
+        
+        for (int j = sequence[i] - 1; j > sequence[i-1]; j--) {
+            if (j < (int)size && !used[j]) {
+                order.push_back(j);
+                used[j] = true;
+            }
+        }
+    }
+
+    for (size_t i = 1; i < size; i++) {
+        if (!used[i]) {
+            order.push_back(i);
+        }
+    }
+
+    return order;
+}
+
 void PmergeMe::sortVector() {
     std::vector<int> mainchain;
     std::vector<int> pendchain;
-    std::vector<int> result;
     std::vector<std::pair<int, int> > pairs;
-
+    
     int straggler = -1;
     (void)straggler;
     if (myvector2.size() % 2 == 1) {
@@ -119,28 +160,45 @@ void PmergeMe::sortVector() {
         }
         pairs.push_back(std::make_pair(pair1, pair2));
     }
-
+    
     for (size_t i = 0; i < pairs.size(); i++) {
         mainchain.push_back(pairs[i].first);
         pendchain.push_back(pairs[i].second);
-        std::cout << pairs[i].first << std::endl;
+        // std::cout << pairs[i].first << std::endl;
     }
-
+    
     if (mainchain.size() > 1) {
         myvector2 = mainchain;
         sortVector();
         mainchain = myvector2;
     }
+    
+    std::vector<int> result = mainchain;
 
     if (!pendchain.empty()) {
         std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(), pendchain[0]);
         result.insert(pos, pendchain[0]);
     }
-
+    
+    if (pendchain.size() > 1) {
+        // std::vector<int> insertionOrder = getInser
+        std::vector<int> insertionOrder = insertionPos(pendchain.size());
+        
+        for (size_t i = 0; i < insertionOrder.size(); i++)
+        {
+            int idx = insertionOrder[i];
+            if (idx > 0 && idx < (int)pendchain.size())
+            {
+                std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(),  pendchain[idx]);
+                result.insert(pos,  pendchain[idx]);
+            }
+        }
+    }
+    
     if (straggler != -1) {
         std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(), straggler);
         result.insert(pos, straggler);
     }
-
+    
     myvector2 = result;
 }
