@@ -103,11 +103,9 @@ std::vector<int> PmergeMe::getSequence(size_t size) {
     std::vector<int> sequence;
     sequence.push_back(0);
     sequence.push_back(1);
-
-    while (sequence.back() < static_cast<int>(size)) {
-        sequence.push_back((sequence.back() + 2 * sequence[sequence.size() - 2]));
+    for (size_t i = 2; i < size; i++) {
+        sequence.push_back((pow(2, (i + 1)) + pow((-1), i)) / 3);
     }
-
     return sequence;
 }
 
