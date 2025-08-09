@@ -77,7 +77,7 @@ void RPN::calculateRpn(char *str) {
         expr = strtok(NULL, " ");
     }
     if (mystack.size() != 1) {
-        std::cout << "Error" << std::endl;
+        std::cout << "Error: Syntax error" << std::endl;
         return;
     }
     std::cout << "Result: " << mystack.top() << std::endl;

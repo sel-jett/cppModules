@@ -50,6 +50,13 @@ void PmergeMe::printVector2() const {
     std::cout << std::endl;
 }
 
+void PmergeMe::printDeque() const {
+    for (std::deque<int>::const_iterator it = mydeque.begin(); it != mydeque.end(); it++) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
 int	ft_atoi(const char *str) {
     int			i = 0;
     long int	num = 0;
@@ -102,8 +109,10 @@ std::deque<int> PmergeMe::getDeque() const {
     return mydeque;
 }
 
-void PmergeMe::setDeque(std::deque<int> deque) {
-    this->mydeque = deque;
+void PmergeMe::setDeque(std::vector<int> deque) {
+    for (size_t i = 0; i < deque.size(); i++) {
+        this->mydeque.push_back(deque[i]);
+    }
 }
 
 std::vector<int> PmergeMe::getSequenceVec(size_t size) {

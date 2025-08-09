@@ -15,14 +15,14 @@ int main(int ac, char **av) {
             pmerge.sortVector();
             clock_t end = clock();
             clock_t start2 = clock();
-            pmerge.setDeque(pmerge.getDeque());
+            pmerge.setDeque(pmerge.getVector());
             pmerge.sortDeque();
             clock_t end2 = clock();
             std::cout << "After: ";
             pmerge.printVector2();
-            std::cout << "Time to process a range of " << pmerge.getVector().size() << " elements with std::[..] : "
+            std::cout << "Time to process a range of " << pmerge.getVector().size() << " elements with std::vector : "
                       << static_cast<float>(end - start) * 1000000.0 / CLOCKS_PER_SEC << " us" << std::endl;
-            std::cout << "Time to process a range of " << pmerge.getDeque().size() << " elements with std::[..] : "
+            std::cout << "Time to process a range of " << pmerge.getDeque().size() << " elements with std::deque : "
                       << static_cast<float>(end2 - start2) * 1000000.0 / CLOCKS_PER_SEC << " us" << std::endl;
         }
         else {

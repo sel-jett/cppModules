@@ -24,7 +24,7 @@ class PmergeMe {
         void setVector2(std::vector<int> vvector);
         std::vector<int> getVector() const;
         std::vector<int> getVector2() const;
-        void setDeque(std::deque<int> deque);
+        void setDeque(std::vector<int> deque);
         std::deque<int> getDeque() const;
         std::vector<int> getSequenceVec(size_t size);
         std::deque<int> getSequenceDeq(size_t size);
@@ -33,6 +33,7 @@ class PmergeMe {
 
         void ft_parcing(char **av);
         void printVector() const;
+        void printDeque() const;
         void printVector2() const;
         void sortVector();
         void sortDeque();
