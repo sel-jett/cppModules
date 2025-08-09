@@ -6,6 +6,8 @@
 #include <cstring>
 #include <cstdlib>
 #include <climits>
+#include <algorithm>
+#include <cmath>
 
 class PmergeMe {
     private:
@@ -24,12 +26,16 @@ class PmergeMe {
         std::vector<int> getVector2() const;
         void setDeque(std::deque<int> deque);
         std::deque<int> getDeque() const;
-        std::vector<int> getSequence(size_t size);
-        std::vector<int> insertionPos(size_t size);
-        
+        std::vector<int> getSequenceVec(size_t size);
+        std::deque<int> getSequenceDeq(size_t size);
+        std::vector<int> insertPosVec(size_t size);
+        std::deque<int> insertPosDeq(size_t size);
+
         void ft_parcing(char **av);
         void printVector() const;
+        void printVector2() const;
         void sortVector();
+        void sortDeque();
         // void sortDeque();
 };
 
