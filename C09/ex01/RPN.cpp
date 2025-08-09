@@ -45,6 +45,7 @@ void RPN::calculateRpn(char *str) {
             mystack.pop();
             int num4 = mystack.top();
             mystack.pop();
+            
             mystack.push(num4 - num3);
         }
         else if (*expr == '*') {
@@ -74,6 +75,10 @@ void RPN::calculateRpn(char *str) {
             return;
         }
         expr = strtok(NULL, " ");
+    }
+    if (mystack.size() != 1) {
+        std::cout << "Error" << std::endl;
+        return;
     }
     std::cout << "Result: " << mystack.top() << std::endl;
 }
